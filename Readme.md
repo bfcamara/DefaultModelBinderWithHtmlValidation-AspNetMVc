@@ -2,4 +2,4 @@
 
 Blog article sample
 
-http://bfcamara.com/
+http://bfcamara.com/post/48031562990/asp-net-mvc-default-model-binder-with-html-validation
