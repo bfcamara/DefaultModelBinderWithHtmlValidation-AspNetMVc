@@ -1,0 +1,54 @@
+﻿@model DefaultBinderWithHtmlValidation.Models.MyModel
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.ValidationSummary(excludePropertyErrors: true)
+    </p>
+    <p>
+        @Html.LabelFor(model => model.MyName)
+        @Html.EditorFor(model => model.MyName)
+        @Html.ValidationMessageFor(model => model.MyName)
+    </p>
+    if (Model.MyArrayOfStrings != null)
+    {
+        for (var i = 0; i < Model.MyArrayOfStrings.Length; i++)
+        {
+    <p>
+        @Html.LabelFor(model => model.MyArrayOfStrings[i])
+        @Html.EditorFor(model => model.MyArrayOfStrings[i])
+        @Html.ValidationMessageFor(model => model.MyArrayOfStrings[i])
+    </p>
+        }
+    }
+    <p>
+        @Html.LabelFor(model => model.MyAnotherModel.MyInt)
+        @Html.EditorFor(model => model.MyAnotherModel.MyInt)
+        @Html.ValidationMessageFor(model => model.MyAnotherModel.MyInt)
+    </p>    
+    <p>
+        A Field to Controller Argument
+        @Html.TextBox("fieldArgument", (string)ViewBag.FieldArgument)
+        @Html.ValidationMessage("fieldArgument")
+    </p>
+    <p>
+        @Html.LabelFor(model => model.AnHtmlField)
+        @Html.TextAreaFor(model => model.AnHtmlField)
+        @Html.ValidationMessageFor(model => model.AnHtmlField)
+    </p> 
+
+    if (!string.IsNullOrEmpty(Model.MyMessage))
+    {
+    <p>
+        @Html.LabelForModel(Model.MyMessage, new { @style = "background-color: red;" })
+    </p>
+    }
+    <p>
+        <button type="submit">Save</button>
+    </p>
+    
+}
