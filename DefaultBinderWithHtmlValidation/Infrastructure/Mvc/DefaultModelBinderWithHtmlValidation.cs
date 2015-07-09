@@ -19,7 +19,7 @@ namespace DefaultBinderWithHtmlValidation.Infrastructure.Mvc
             }
             catch (HttpRequestValidationException)
             {
-                Trace.TraceWarning("Ilegal characters were found in field {0}", bindingContext.ModelMetadata.DisplayName ?? bindingContext.ModelName);
+                Trace.TraceWarning("Illegal characters were found in field {0}", bindingContext.ModelMetadata.DisplayName ?? bindingContext.ModelName);
                 bindingContext.ModelState.AddModelError(bindingContext.ModelName, string.Format("Ilegal characters were found in field {0}", bindingContext.ModelMetadata.DisplayName ?? bindingContext.ModelName));
             }
 
